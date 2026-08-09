@@ -118,14 +118,29 @@
   .hero-stat b{display:block;font-size:28px;color:var(--gold);font-family:'Georgia',serif;}
   .hero-stat span{font-size:13px;color:#b9c6d3;text-transform:uppercase;letter-spacing:1px;}
 
+  /* VALUE CHAIN */
+  .value-chain{padding:56px 0;background:var(--gray-50);border-bottom:1px solid var(--gray-200);}
+  .value-steps{display:flex;align-items:center;gap:20px;}
+  .value-step{flex:1;text-align:center;}
+  .value-num{
+    width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-family:'Georgia',serif;
+    font-weight:700;font-size:15px;margin:0 auto 12px;
+  }
+  .value-step:nth-child(3) .value-num{background:var(--teal);}
+  .value-step:nth-child(5) .value-num{background:var(--gold);color:#2b2110;}
+  .value-step h4{font-size:16px;color:var(--navy);margin-bottom:8px;}
+  .value-step p{font-size:13.5px;color:var(--gray-500);line-height:1.6;}
+  .value-arrow{font-size:22px;color:var(--gray-200);flex-shrink:0;}
+  @media(max-width:860px){
+    .value-steps{flex-direction:column;gap:24px;}
+    .value-arrow{transform:rotate(90deg);}
+  }
+
   /* ABOUT / TRUST */
   .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;}
   .about-grid h2{font-size:32px;margin-bottom:18px;}
   .about-grid p{color:var(--gray-700);margin-bottom:16px;font-size:16px;}
-  .about-badges{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px;}
-  .badge-card{background:var(--gray-50);border-radius:var(--radius);padding:18px;border-left:3px solid var(--teal);}
-  .badge-card b{display:block;color:var(--navy);font-size:15px;margin-bottom:4px;}
-  .badge-card span{font-size:13px;color:var(--gray-500);}
   .about-visual{
     background:linear-gradient(150deg,var(--teal-light),#fff);
     border-radius:16px;
@@ -358,19 +373,41 @@
   </div>
 </section>
 
+<section class="value-chain">
+  <div class="container">
+    <div class="section-head" style="margin-bottom:36px;">
+      <span class="section-tag">The Value</span>
+      <h2 style="font-size:26px;">What You Walk Away With</h2>
+    </div>
+    <div class="value-steps">
+      <div class="value-step">
+        <div class="value-num">1</div>
+        <h4>Candid Customer Feedback</h4>
+        <p>An independent interviewer gets customers to open up in ways they rarely would with your own team.</p>
+      </div>
+      <div class="value-arrow">→</div>
+      <div class="value-step">
+        <div class="value-num">2</div>
+        <h4>Insight Into Your Process</h4>
+        <p>Patterns emerge across interviews — where deals stall, why customers leave, what actually drives decisions.</p>
+      </div>
+      <div class="value-arrow">→</div>
+      <div class="value-step">
+        <div class="value-num">3</div>
+        <h4>Clarity to Act On</h4>
+        <p>You'll see the exact themes and language behind your wins, losses, and churn — so your team knows what's really going on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="about">
   <div class="container about-grid">
     <div>
       <span class="section-tag">Why Turnbow Consulting</span>
-      <h2>Built by one of the people who helped define the win-loss category.</h2>
+      <h2>Led by someone who has spent his career listening to customers.</h2>
       <p>Turnbow Consulting was founded by Cam Turnbow, one of the first people to build a career specifically around win-loss research. Cam joined Clozd — one of the category's founding firms — as its 8th employee back in 2018, and has since personally conducted more than 2,200 customer interviews, spanning companies from the Fortune 100 down to early-stage startups, across nearly every industry.</p>
-      <p>Before Clozd, Cam ran the voice-of-customer program at Instructure, where he saw firsthand just how valuable unfiltered customer feedback is — and how rarely most companies actually get it. That experience exposed a clear gap: while large enterprises can afford dedicated win-loss programs, most small and mid-sized companies simply can't access the same insight at a price that makes sense. Turnbow Consulting exists to close that gap — bringing the same rigor and independence to companies of any size, without the enterprise price tag.</p>
-      <div class="about-badges">
-        <div class="badge-card"><b>Independent Framing</b><span>Neutral third-party positioning drives higher candor</span></div>
-        <div class="badge-card"><b>Structured Method</b><span>Custom questionnaires built around your deal context</span></div>
-        <div class="badge-card"><b>Full Documentation</b><span>Recording, transcript, and summary for every call</span></div>
-        <div class="badge-card"><b>Done-For-You</b><span>Outreach, scheduling, and follow-up handled end to end</span></div>
-      </div>
+      <p>Before Clozd, Cam ran the voice-of-customer program at Instructure, where he saw firsthand just how valuable unfiltered customer feedback is — and how rarely most companies actually get it. That experience exposed a clear gap: while large enterprises can afford dedicated win-loss programs, most small companies and startups simply can't access the same insight at a price that makes sense. Turnbow Consulting exists to close that gap — bringing the same rigor and independence to companies of any size, without the enterprise price tag.</p>
     </div>
     <div class="about-visual">
       <div class="big-label">Track Record</div>
@@ -379,7 +416,6 @@
       <hr>
       <ul>
         <li>10 years of voice-of-customer &amp; qualitative research experience</li>
-        <li>Enterprise &amp; mid-market win-loss programs</li>
         <li>Customer churn &amp; renewal interviews</li>
         <li>Competitive positioning insight</li>
         <li>Sales process feedback loops</li>
@@ -461,9 +497,7 @@
           <li><span class="ic">✓</span> Full call recording</li>
           <li><span class="ic">✓</span> Complete written transcript</li>
           <li><span class="ic">✓</span> Short summary of key takeaways</li>
-          <li><span class="ic">✓</span> All deliverables provided as a single PDF</li>
           <li><span class="ic">✓</span> Outreach coordination &amp; scheduling link included</li>
-          <li><span class="ic">✓</span> Follow-up reminders to encourage participation</li>
         </ul>
       </div>
 
@@ -631,6 +665,7 @@
           <li>cam@turnbowconsulting.com</li>
           <li>801-510-0575</li>
           <li>Lehi, UT</li>
+          <li><a href="https://www.linkedin.com/in/cam-turnbow-314b0290/" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
       </div>
     </div>
