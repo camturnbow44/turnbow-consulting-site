@@ -263,6 +263,34 @@
   }
   .summary-row.total span:last-child{color:var(--teal);font-family:'Georgia',serif;}
 
+  .terms-check{
+    display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--gray-700);
+    margin-bottom:14px;cursor:pointer;line-height:1.5;
+  }
+  .terms-check input{margin-top:2px;width:15px;height:15px;accent-color:var(--teal);flex-shrink:0;cursor:pointer;}
+  .terms-check a{color:var(--teal);text-decoration:underline;font-weight:600;}
+  .btn:disabled{opacity:0.5;cursor:not-allowed;}
+  .btn:disabled:hover{transform:none;}
+
+  .modal-overlay{
+    display:none;position:fixed;inset:0;background:rgba(10,26,46,0.6);
+    align-items:center;justify-content:center;z-index:1000;padding:24px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-box{
+    background:#fff;border-radius:14px;max-width:680px;width:100%;max-height:85vh;
+    overflow-y:auto;padding:36px 40px;box-shadow:var(--shadow-lg);position:relative;
+  }
+  .modal-box h3{font-size:22px;color:var(--navy);margin-bottom:6px;}
+  .modal-box .modal-updated{font-size:12.5px;color:var(--gray-500);margin-bottom:22px;}
+  .modal-box h4{font-size:15px;color:var(--navy);margin:22px 0 8px;}
+  .modal-box p{font-size:14px;color:var(--gray-700);line-height:1.7;margin-bottom:6px;}
+  .modal-close{
+    position:absolute;top:20px;right:20px;background:var(--gray-100);border:none;border-radius:50%;
+    width:32px;height:32px;font-size:16px;cursor:pointer;color:var(--gray-700);
+  }
+  .modal-close:hover{background:var(--gray-200);}
+
   .pay-methods{display:flex;align-items:center;gap:10px;margin-top:14px;justify-content:center;}
   .pay-methods span{font-size:12px;color:var(--gray-500);}
   .card-icons{display:flex;gap:6px;}
@@ -542,7 +570,11 @@
           <div class="summary-row total"><span>Total Due Today</span><span id="totalAmt">$1,500.00</span></div>
         </div>
 
-        <button type="button" id="checkoutBtn" class="btn btn-primary btn-block">Pay with Card — Secure Checkout</button>
+        <label class="terms-check">
+          <input type="checkbox" id="termsCheckbox">
+          <span>I have read and agree to the <a href="#" id="openTerms">Terms &amp; Conditions</a></span>
+        </label>
+        <button type="button" id="checkoutBtn" class="btn btn-primary btn-block" disabled>Pay with Card — Secure Checkout</button>
         <div class="pay-methods">
           <span>We accept</span>
           <div class="card-icons">
@@ -673,6 +705,58 @@
   </div>
 </footer>
 
+<div class="modal-overlay" id="termsModal">
+  <div class="modal-box">
+    <button type="button" class="modal-close" id="closeTerms" aria-label="Close">✕</button>
+    <h3>Terms &amp; Conditions</h3>
+    <p class="modal-updated">Last updated: August 8, 2026</p>
+
+    <p>These Terms &amp; Conditions ("Terms") govern your purchase and use of interview services provided by Turnbow Consulting ("Turnbow Consulting," "we," "us"). By purchasing an interview bundle or otherwise engaging our services, you ("Client," "you") agree to be bound by these Terms.</p>
+
+    <h4>1. Services</h4>
+    <p>Turnbow Consulting provides independent, third-party win-loss and voice-of-customer interview services. Each bundle includes a minimum of five (5) interviews, priced at $300 per interview ($1,500 total). Additional interviews beyond the base bundle may be purchased at $250 each. Each interview includes a 30-minute recorded conversation, a custom questionnaire, a full call recording, a written transcript, and a short summary of key takeaways.</p>
+
+    <h4>2. Payment</h4>
+    <p>All fees are due and payable in full at the time of purchase via our secure online checkout, processed by Stripe. We accept all major credit cards. Prices are quoted in U.S. dollars.</p>
+
+    <h4>3. Optional Incentives</h4>
+    <p>You may elect to include a per-interview incentive ($50–$250) intended for the interview participant as a thank-you for their time. If selected, the incentive amount is added to the per-interview rate and collected as part of your total payment. Turnbow Consulting will coordinate delivery of the incentive to the participant.</p>
+
+    <h4>4. Interview Expiration</h4>
+    <p>Interviews must be used within six (6) months of the purchase date. Unused interviews expire at the end of this period and are non-refundable.</p>
+
+    <h4>5. Participation Is Not Guaranteed</h4>
+    <p>Participation rates vary by customer and industry. Some customers contacted for an interview may decline to participate or may not respond. By purchasing our services, you acknowledge this risk. No refunds will be issued for interviews where the customer does not respond or declines to participate.</p>
+
+    <h4>6. Scheduling Process</h4>
+    <p>To initiate an interview, you agree to send an introductory email to your customer, CC'ing Turnbow Consulting, explaining that an independent third party will be reaching out to gather feedback. Turnbow Consulting will then share a scheduling link and may follow up with reminder emails to encourage participation.</p>
+
+    <h4>7. Recording and Consent</h4>
+    <p>Interviews are recorded for transcription and delivery purposes. By engaging our services, you represent that you have a reasonable basis to introduce your customer to Turnbow Consulting for this purpose. Turnbow Consulting will inform each participant that the call is being recorded and will proceed only with the participant's consent obtained at the start of the call.</p>
+
+    <h4>8. Deliverables and Confidentiality</h4>
+    <p>Recordings, transcripts, and summaries are prepared exclusively for you and will not be shared with any third party without your consent, except as required by law. You retain the right to use these deliverables for your internal business purposes.</p>
+
+    <h4>9. No Guarantee of Results</h4>
+    <p>Turnbow Consulting provides research, observations, and summaries based on customer interviews. We do not guarantee any specific business outcome, and any insights provided are for informational purposes only. Decisions made based on our deliverables are solely your responsibility.</p>
+
+    <h4>10. Refund Policy</h4>
+    <p>Except as otherwise stated in these Terms, all purchases are final. No refunds will be issued for unused, expired, or non-responsive interviews.</p>
+
+    <h4>11. Limitation of Liability</h4>
+    <p>To the fullest extent permitted by law, Turnbow Consulting's total liability for any claim arising from these Terms or our services is limited to the amount you paid for the applicable interview bundle. Turnbow Consulting is not liable for indirect, incidental, or consequential damages.</p>
+
+    <h4>12. Governing Law</h4>
+    <p>These Terms are governed by the laws of the State of Utah, without regard to conflict-of-law principles.</p>
+
+    <h4>13. Changes to These Terms</h4>
+    <p>We may update these Terms from time to time. Continued use of our services after changes take effect constitutes acceptance of the updated Terms.</p>
+
+    <h4>14. Contact</h4>
+    <p>Questions about these Terms can be directed to cam@turnbowconsulting.com.</p>
+  </div>
+</div>
+
 <script>
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(q => {
@@ -731,9 +815,28 @@
     checkoutBtn.textContent = `Pay with Card — ${fmt(total)}`;
   }
 
+  // Terms & Conditions modal + checkout gate
+  const termsCheckbox = document.getElementById('termsCheckbox');
+  const openTerms = document.getElementById('openTerms');
+  const closeTerms = document.getElementById('closeTerms');
+  const termsModal = document.getElementById('termsModal');
+
+  openTerms.addEventListener('click', (e) => {
+    e.preventDefault();
+    termsModal.classList.add('open');
+  });
+  closeTerms.addEventListener('click', () => termsModal.classList.remove('open'));
+  termsModal.addEventListener('click', (e) => {
+    if (e.target === termsModal) termsModal.classList.remove('open');
+  });
+  termsCheckbox.addEventListener('change', () => {
+    checkoutBtn.disabled = !termsCheckbox.checked;
+  });
+
   // Sends the live-calculated order to a secure serverless function, which
   // creates the exact-amount Stripe Checkout session and returns its URL.
   checkoutBtn.addEventListener('click', async () => {
+    if (!termsCheckbox.checked) return;
     const originalText = checkoutBtn.textContent;
     checkoutBtn.disabled = true;
     checkoutBtn.textContent = 'Redirecting to secure checkout…';
@@ -741,7 +844,12 @@
       const res = await fetch('/.netlify/functions/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ interviews: totalInterviews, incentive: currentIncentive })
+        body: JSON.stringify({
+          interviews: totalInterviews,
+          incentive: currentIncentive,
+          termsAccepted: true,
+          termsAcceptedAt: new Date().toISOString()
+        })
       });
       const data = await res.json();
       if (res.ok && data.url) {
