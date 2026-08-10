@@ -544,7 +544,7 @@
 
     <div class="risk-note">
       <span class="risk-note-ic">⚠</span>
-      <p><strong>Please note:</strong> participation rates vary greatly between each customer and industry. At times, customers may choose not to participate or may be non-responsive. Each Turnbow Consulting customer recognizes this as a risk prior to engagement. No refunds will be issued for non-responsive customers.</p>
+      <p><strong>Please note:</strong> participation rates vary greatly between each customer and industry. At times, customers may choose not to participate or may be non-responsive. Each Turnbow Consulting customer recognizes this as a risk prior to engagement. No refunds will be issued for non-responsive customers. However, while refunds aren't given for unresponsive participants, the number of contacts you're allowed to provide for outreach is not limited — you're welcome to submit additional contacts to reach out to for the same interview slot.</p>
     </div>
   </div>
 </section>
@@ -552,7 +552,7 @@
 <section id="roi" class="roi-section">
   <div class="container">
     <div class="section-head">
-      <span class="section-tag">Do The Math</span>
+      <span class="section-tag">ROI Calculator</span>
       <h2>What's One Saved Deal Worth?</h2>
       <p>If these conversations help you win back or retain just one deal, here's what that's worth.</p>
     </div>
@@ -574,7 +574,7 @@
           <button type="button" id="roiQtyPlus" class="qty-btn" aria-label="Add an interview">+</button>
         </div>
       </div>
-      <p class="roi-input-hint">Bundles start at 5 interviews ($1,500); each additional interview is $250. More interviews mean more chances to catch the one conversation that saves a deal.</p>
+      <p class="roi-input-hint">Bundles start at 5 interviews ($1,500); each additional interview is $250, plus a $50 per-interview participation incentive. More interviews mean more chances to catch the one conversation that saves a deal.</p>
 
       <div class="roi-input-row">
         <label for="dealSizeInput">Average deal size you're trying to win back or retain</label>
@@ -762,7 +762,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q"><span>What if my customer doesn't respond or declines to participate?</span><span class="plus">+</span></div>
-        <div class="faq-a"><p>Participation rates vary greatly between each customer and industry. At times, customers may choose not to participate or may be non-responsive. Each Turnbow Consulting customer recognizes this as a risk prior to engagement, and no refunds are issued for non-responsive customers.</p></div>
+        <div class="faq-a"><p>Participation rates vary greatly between each customer and industry. At times, customers may choose not to participate or may be non-responsive. Each Turnbow Consulting customer recognizes this as a risk prior to engagement, and no refunds are issued for non-responsive customers. That said, there's no limit on the number of contacts you can submit for outreach — if one contact doesn't respond, you're welcome to provide another for the same interview slot.</p></div>
       </div>
     </div>
   </div>
@@ -829,7 +829,7 @@
     <p>Interviews must be used within six (6) months of the purchase date. Unused interviews expire at the end of this period and are non-refundable.</p>
 
     <h4>5. Participation Is Not Guaranteed</h4>
-    <p>Participation rates vary by customer and industry. Some customers contacted for an interview may decline to participate or may not respond. By purchasing our services, you acknowledge this risk. No refunds will be issued for interviews where the customer does not respond or declines to participate.</p>
+    <p>Participation rates vary by customer and industry. Some customers contacted for an interview may decline to participate or may not respond. By purchasing our services, you acknowledge this risk. No refunds will be issued for interviews where the customer does not respond or declines to participate. However, there is no limit on the number of contacts a Client may submit for outreach — if a given contact does not respond, the Client may submit an additional contact for the same interview slot.</p>
 
     <h4>6. Scheduling Process</h4>
     <p>To initiate an interview, you agree to send an introductory email to your customer, CC'ing Turnbow Consulting, explaining that an independent third party will be reaching out to gather feedback. Turnbow Consulting will then share a scheduling link and may follow up with reminder emails to encourage participation.</p>
@@ -936,10 +936,11 @@
   const roiNet = document.getElementById('roiNet');
 
   let roiInterviews = BASE_QTY;
+  const ROI_INCENTIVE = 50; // assumed $50/interview participation incentive
 
   function calcInterviewCost(interviews){
     const extra = Math.max(0, interviews - BASE_QTY);
-    return BUNDLE_PRICE + extra * EXTRA_PRICE;
+    return BUNDLE_PRICE + extra * EXTRA_PRICE + ROI_INCENTIVE * interviews;
   }
 
   function updateROI(){
